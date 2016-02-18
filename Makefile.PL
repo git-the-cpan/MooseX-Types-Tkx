@@ -11,10 +11,10 @@ WriteMakefile(
    PREREQ_PM => {
       'perl'                 => 5.012000,
       'Scalar::Util'         => 0,
+      'Modern::PBP::Perl'    => 1.200,
       'MooseX::Types'        => 0,
       'MooseX::Types::Moose' => 0,  
-      'strict'               => 0,
-      'warnings'             => 0,   },
+   },
    BUILD_REQUIRES => {
       'Test::More'          => 0,
       'Test::Pod'           => 1.14,

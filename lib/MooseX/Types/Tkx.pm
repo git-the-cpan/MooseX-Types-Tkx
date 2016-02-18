@@ -2,8 +2,8 @@
 # # Script     : MooseX::Types::Tkx                                            #
 # # -------------------------------------------------------------------------- #
 # # Copyright  : Free under 'GNU General Public License' or 'Artistic License' #
-# # Authors    : JVBSOFT - Jürgen von Brietzke                   0.001 - 1.000 #
-# # Version    : 1.000                                             17.Feb.2016 #
+# # Authors    : JVBSOFT - Jürgen von Brietzke                   0.001 - 1.010 #
+# # Version    : 1.010                                             18.Feb.2016 #
 # # -------------------------------------------------------------------------- #
 # # Function   : MooseX::Types for Tkx-GUI-Objects.                            #
 # # -------------------------------------------------------------------------- #
@@ -11,29 +11,23 @@
 # # Coding     : ISO 8859-15 / Latin-9                        UNIX-lineendings #
 # # Standards  : Perl-Best-Practices                       severity 1 (brutal) #
 # # -------------------------------------------------------------------------- #
-# # Pragmas    : strict, warnings                                              #
+# # Pragmas    : none                                                          #
 # # -------------------------------------------------------------------------- #
 # # Module     : Scalar::Util                           ActivePerl-CORE-Module #
 # #              ------------------------------------------------------------- #
-# #              MooseX::Types                          ActivePerl-REPO-Module #
+# #              Modern::PBP::Perl                      ActivePerl-REPO-Module #
+# #              MooseX::Types                                                 #
 # #              MooseX::Types::Moose                                          #
 # ##############################################################################
 
-package MooseX::Types::Tkx 1.000;
+package MooseX::Types::Tkx 1.010;
 
 # ##############################################################################
 
-use strict;
-use warnings;
-
-# ##############################################################################
-
-use MooseX::Types::Moose qw{Ref};
+use Modern::PBP::Perl;
 use Scalar::Util qw{blessed};
-
-# ##############################################################################
-
 use MooseX::Types -declare => [qw{TkxObject}];
+use MooseX::Types::Moose qw{Object};
 
 # ##############################################################################
 # # Data types        |                                                        #
@@ -42,10 +36,10 @@ use MooseX::Types -declare => [qw{TkxObject}];
 # ##############################################################################
 
                                                                       ## no tidy
-subtype 'TkxObject',
-   as 'Ref',
-   where { ( my $package = blessed($_) ) =~ m{^Tkx(?:[:]{2}[\w]+)*$}smx },
-   message {"'$_' is not a Tkx object"};
+subtype TkxObject,
+   as Object,
+   where { ( my $package = blessed($ARG) ) =~ m{^Tkx(?:[:]{2}[\w]+)*$}smx },
+   message {"'$ARG' is not a Tkx-GUI-object"};
                                                                      ## use tidy
 
 # ##############################################################################
@@ -61,20 +55,24 @@ MooseX::Types::Tkx - MooseX::Types for Tkx-GUI-Objects.
 
 =head1 VERSION
 
-This document describes MooseX::Types::Tkx version 1.000.
+This document describes MooseX::Types::Tkx version 1.010.
 
 
 =head1 SYNOPSIS
 
    use Moose;
-   use Moose::Utile::TypeConstraints;
    use MooseX::Types::Tkx qw{TkxObject};
    use Tkx;
    ...
    has 'mainwindow' => (
-      is => 'rw'
-      isa => 'TkxObject'
-   )
+      is  => 'rw',
+      isa => TkxObject,
+   );
+   has 'button' => (
+      is  => 'ro',
+      isa => TkxObject,
+   );
+   ...
 
 
 =head1 DESCRIPTION
@@ -105,14 +103,12 @@ The following pragmas and modules are required:
 
 =head2 CORE
 
-   - strict
-   - warnings
-
    - Scalar::Utils
 
 
 =head2 CPAN or ActiveState Repository
 
+   - Modern::PBP::Perl
    - MooseX::Types
    - MooseX::Types::Moose
 
@@ -138,7 +134,7 @@ Juergen von Brietzke - JVBSOFT  C<< <juergen.von.brietzke@t-online.de> >>
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2015,
+Copyright (c) 2015, 2016
 Juergen von Brietzke C<< <juergen.von.brietzke@t-online.de> >>.
 All rights reserved.
 

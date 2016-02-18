@@ -9,10 +9,9 @@ my $builder = Module::Build->new(
    requires => {
       'perl'                 => 5.012000,
       'Scalar::Util'         => 0,
+      'Modern::PBP::Perl'    => 1.200,
       'MooseX::Types'        => 0,
       'MooseX::Types::Moose' => 0,
-      'strict'               => 0,
-      'warnings'             => 0,
    },
    build_requires => {
       'Test::More'          => 0,

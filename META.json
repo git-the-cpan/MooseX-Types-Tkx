@@ -28,22 +28,21 @@
       },
       "runtime" : {
          "requires" : {
+            "Modern::PBP::Perl" : "1.2",
             "MooseX::Types" : "0",
             "MooseX::Types::Moose" : "0",
             "Scalar::Util" : "0",
-            "perl" : "5.012",
-            "strict" : "0",
-            "warnings" : "0"
+            "perl" : "5.012"
          }
       }
    },
    "provides" : {
       "MooseX::Types::Tkx" : {
          "file" : "lib/MooseX/Types/Tkx.pm",
-         "version" : "1.000"
+         "version" : "1.010"
       }
    },
    "release_status" : "stable",
-   "version" : "1.000",
+   "version" : "1.010",
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }

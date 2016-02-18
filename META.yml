@@ -18,13 +18,12 @@ name: MooseX-Types-Tkx
 provides:
   MooseX::Types::Tkx:
     file: lib/MooseX/Types/Tkx.pm
-    version: '1.000'
+    version: '1.010'
 requires:
+  Modern::PBP::Perl: '1.2'
   MooseX::Types: '0'
   MooseX::Types::Moose: '0'
   Scalar::Util: '0'
   perl: '5.012'
-  strict: '0'
-  warnings: '0'
-version: '1.000'
+version: '1.010'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'

@@ -1,4 +1,4 @@
-MooseX-Types-Tkx version 1.000
+MooseX-Types-Tkx version 1.010
 ================================================================================
 Created a data type for Tkx objects. For example, Main Window, buttons, frames
 etc.
@@ -22,23 +22,25 @@ Alternatively, to install with Module::Build, you can use the following commands
 SYNOPSIS
 
    use Moose;
-   use Moose::Utile::TypeConstraints;
    use MooseX::Types::Tkx qw{TkxObject};
    use Tkx;
    ...
    has 'mainwindow' => (
-      is => 'rw'
-      isa => 'TkxObject'
+      is => 'rw',
+      isa => TkxObject,
    )
+   has 'button' => (
+      is  => 'ro',
+      isa => TkxObject,
+   );
+   ...
 
 DEPENDENCIES
 
 The following pragmas and modules are required:
 
-   - strict
-   - warnings
    - Scalar::Utils
-   - Perl::Version
+   - Modern::PBP::Perl
    - MooseX::Types
    - MooseX::Types::Moose
 
